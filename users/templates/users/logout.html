@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %} 
+<style type="text/css">
+    #center{
+      margin-top: 90px;
+    }
+</style>
+      <!-- Blog Entries Column -->
+      <div class="col-md-8">
+        <h4 id="center">You are Successfully logged out. <a href="{% url 'login' %}">Log back in here.</a></h4>
+      </div>
+      
+{% endblock %}

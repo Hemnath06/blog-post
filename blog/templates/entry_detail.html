@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %} 
+
+      <!-- Blog Entries Column -->
+      <div class="col-md-8">
+
+        <a href="{% url 'blog-home' %}">Back to Home</a>
+        <!-- Blog Post -->
+        <div class="card mb-4 mt-4">
+          <div class="card-body">
+            <h2 class="card-title">{{ object.entry_title }}</h2>
+            <p class="card-text">{{ object.entry_text }}</p>
+          </div>
+          <div class="card-footer text-muted">
+            Posted on {{ object.entry_date }} by
+            <span class= "text-info mr-2">{{ object.entry_author }}</span>
+          </div><br>
+          <hr>
+          <h5>Comments...</h5> <hr>
+          {% if not entry.comments.all %}
+             No Comments Yet...<a href="{% url 'add_comment' entry.pk %}">
+             Add One</a>
+             </a>
+          {% else %}
+          <a href="{% url 'add_comment' entry.pk %}">Add Comment</a><br>
+             {% for comment in entry.comments.all %}
+                 <strong>
+                 {{ comment.name }} - 
+                 {{ comment.date_added }}
+                 </strong>
+                 
+                 {{ comment.body }}
+                 
+                 
+
+
+              {% endfor %}
+          {% endif %} <br><hr>
+        </div> 
+
+      </div>
+
+{% endblock %}
